@@ -33,4 +33,15 @@ add_action('rest_api_init', function() {
 	));
 });
 
+// Plugin update checker
+require 'plugin-update/plugin-update-checker.php';
+$updateChecker = Puc_v4_Factory::buildUpdateChecker(
+	'https://github.com/spandiv-dev/spandiv-manager', // GitHub repo
+	__FILE__, // Full path to the main plugin file or functions.php
+	'spandiv-manager' // Plugin slug
+);
+
+// Set the branch that contains the stable release
+$updateChecker->setBranch('master');
+
 ?>
